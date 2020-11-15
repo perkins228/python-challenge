@@ -7,24 +7,55 @@ total_months = 0
 revenue = 0
 change = []
 dates = []
+increase = 0
+increace_month = 0
+decrease = 0
+decrease_month = 0
+
 
 
 
 with open(filepath) as csvfile:
     bankcsv = csv.reader(csvfile, delimiter = ",")
-    next(bankcsv)
-    prior_rev = 0
-
+    csv_header = next(bankcsv)
+    row = next(bankcsv)
+    prior_profit = int(row[1])
+    total_months = 1
+    date = 1
+    revenue = int(row[1])
+    increase = 0
+    decrease = int(row[1])
+    increase_month = row[0]
+    decrease_month = row[0]
+    
     for row in bankcsv:
         total_months = total_months + 1
-        prior_rev = int(row[1])
         revenue = revenue + int(row[1])
-        change.append(int(row[1]) - prior_rev )
+        changes = int(row[1]) - prior_profit
+        change.append(changes)
+        dates.append(row[0])
+
+        if changes > increase:
+            increase = changes
+            increase_month = row[0]
+
+        if changes < decrease:
+            decrease = changes
+            decrease_month = row[0]
+
+
         
+avg_profit =round(sum(change)/len(change),2)
+largest = max(change)
+smallest = min(change)
 
 
 
 
 print(f"Total Months: {total_months}")
 print(f"Total: ${revenue}")
+print(f"Average Change: ${avg_profit}")
+print(f"Greatest Increase in Profits: {increase_month} (${largest})")
+print(f"Greatest Decrease in Profits: {decrease_month} (${smallest})")
+
 print(change)
