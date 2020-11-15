@@ -58,3 +58,15 @@ print(f"Average Change: ${avg_profit}")
 print(f"Greatest Increase in Profits: {increase_month} (${increase})")
 print(f"Greatest Decrease in Profits: {decrease_month} (${decrease})")
 print("------")
+
+textfile = os.path.join("./Resources/budget_data.text")
+with open(textfile, "w") as txtfile:
+
+    txtfile.write("Financial Analysis\n")
+    txtfile.write("---------------------------\n")
+    txtfile.write(f"Total Months: {total_months}\n")
+    txtfile.write(f"Total: ${revenue}\n")
+    txtfile.write(f"Average Change: ${avg_profit}\n")
+    txtfile.write(f"Greatest Increase in Profits: {increase_month} (${increase})\n")
+    txtfile.write(f"Greatest Decrease in Profits: {decrease_month} (${decrease})\n")
+    txtfile.write("------\n")
