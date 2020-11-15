@@ -32,6 +32,7 @@ with open(filepath) as csvfile:
         total_months = total_months + 1
         revenue = revenue + int(row[1])
         changes = int(row[1]) - prior_profit
+        prior_profit = int(row[1])
         change.append(changes)
         dates.append(row[0])
 
@@ -43,19 +44,17 @@ with open(filepath) as csvfile:
             decrease = changes
             decrease_month = row[0]
 
-
         
 avg_profit =round(sum(change)/len(change),2)
-largest = max(change)
-smallest = min(change)
 
 
 
 
+print("Financial Analysis")
+print("---------------------------")
 print(f"Total Months: {total_months}")
 print(f"Total: ${revenue}")
 print(f"Average Change: ${avg_profit}")
-print(f"Greatest Increase in Profits: {increase_month} (${largest})")
-print(f"Greatest Decrease in Profits: {decrease_month} (${smallest})")
-
-print(change)
+print(f"Greatest Increase in Profits: {increase_month} (${increase})")
+print(f"Greatest Decrease in Profits: {decrease_month} (${decrease})")
+print("------")
