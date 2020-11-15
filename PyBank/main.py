@@ -11,8 +11,10 @@ revenue = 0
 with open(filepath) as csvfile:
     bankcsv = csv.reader(csvfile, delimiter = ",")
     next(bankcsv)
+    total_months = total_months + 1
     revenue = revenue + 1
 
     for row in bankcsv:
+        total_months = total_months + 1
         revenue = revenue + int(row[1])
-    print(revenue)
+        print(revenue)
