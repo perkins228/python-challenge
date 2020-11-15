@@ -11,7 +11,7 @@ with open(filepath) as csvfile:
     correy_votes = 0
     li_votes = 0
     otooley_votes = 0
-    candidates = []
+  
 
     for row in election_csv:
         total_votes = total_votes + 1
